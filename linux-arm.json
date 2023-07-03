@@ -1,0 +1,88 @@
+{
+    "name": "simpleLinuxVM",
+    "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/virtualMachines/simpleLinuxVM",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "francecentral",
+    "properties": {
+        "vmId": "4d7b82de-f650-45f3-9731-ec55b121510c",
+        "hardwareProfile": {
+            "vmSize": "Standard_D2s_v3"
+        },
+        "storageProfile": {
+            "imageReference": {
+                "publisher": "Canonical",
+                "offer": "0001-com-ubuntu-server-focal",
+                "sku": "20_04-lts-gen2",
+                "version": "latest",
+                "exactVersion": "20.04.202307010"
+            },
+            "osDisk": {
+                "osType": "Linux",
+                "name": "simpleLinuxVM_OsDisk_1_1829310f878544e79159d93ca2261078",
+                "createOption": "FromImage",
+                "caching": "ReadWrite",
+                "managedDisk": {
+                    "storageAccountType": "Standard_LRS",
+                    "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/disks/simpleLinuxVM_OsDisk_1_1829310f878544e79159d93ca2261078"
+                },
+                "deleteOption": "Detach",
+                "diskSizeGB": 30
+            },
+            "dataDisks": []
+        },
+        "osProfile": {
+            "computerName": "simpleLinuxVM",
+            "adminUsername": "adminuser",
+            "linuxConfiguration": {
+                "disablePasswordAuthentication": false,
+                "provisionVMAgent": true,
+                "patchSettings": {
+                    "patchMode": "ImageDefault",
+                    "assessmentMode": "ImageDefault"
+                }
+            },
+            "secrets": [],
+            "allowExtensionOperations": true,
+            "requireGuestProvisionSignal": true
+        },
+        "securityProfile": {
+            "uefiSettings": {
+                "secureBootEnabled": true,
+                "vTpmEnabled": true
+            },
+            "securityType": "TrustedLaunch"
+        },
+        "networkProfile": {
+            "networkInterfaces": [
+                {
+                    "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Network/networkInterfaces/simpleLinuxVMNetInt"
+                }
+            ]
+        },
+        "provisioningState": "Succeeded"
+    },
+    "resources": [
+        {
+            "name": "GuestAttestation",
+            "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/virtualMachines/simpleLinuxVM/extensions/GuestAttestation",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "francecentral",
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "provisioningState": "Succeeded",
+                "enableAutomaticUpgrade": true,
+                "publisher": "Microsoft.Azure.Security.LinuxAttestation",
+                "type": "GuestAttestation",
+                "typeHandlerVersion": "1.0",
+                "settings": {
+                    "AttestationConfig": {
+                        "MaaSettings": {
+                            "maaEndpoint": "",
+                            "maaTenantName": "GuestAttestation"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
