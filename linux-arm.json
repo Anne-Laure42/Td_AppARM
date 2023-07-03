@@ -51,14 +51,10 @@
                 "osProfile": {
                     "computerName": "[parameters('virtualMachines_simpleLinuxVM_name')]",
                     "adminUsername": "adminuser",
-                    "linuxConfiguration": {
-                        "disablePasswordAuthentication": false,
-                        "provisionVMAgent": true,
-                        "patchSettings": {
-                            "patchMode": "ImageDefault",
-                            "assessmentMode": "ImageDefault"
+                    "adminPassword": "[parameters('adminPasswordOrKey')]",
                         },
-                        "enableVMAgentPlatformUpdates": false
+                    "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), null(), variables('linuxConfiguration'))]"
+        },
                     },
                     "secrets": [],
                     "allowExtensionOperations": true,
