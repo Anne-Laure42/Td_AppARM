@@ -1,0 +1,108 @@
+{
+    "name": "simple-vm",
+    "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/virtualMachines/simple-vm",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "francecentral",
+    "properties": {
+        "vmId": "57444527-6b7d-442d-9ce3-214b55fa4623",
+        "hardwareProfile": {
+            "vmSize": "Standard_D2s_v5"
+        },
+        "storageProfile": {
+            "imageReference": {
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2022-datacenter-azure-edition",
+                "version": "latest",
+                "exactVersion": "20348.1787.230621"
+            },
+            "osDisk": {
+                "osType": "Windows",
+                "name": "simple-vm_OsDisk_1_96b2aac82e8f45389ba471081af38ae0",
+                "createOption": "FromImage",
+                "caching": "ReadWrite",
+                "managedDisk": {
+                    "storageAccountType": "StandardSSD_LRS",
+                    "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/disks/simple-vm_OsDisk_1_96b2aac82e8f45389ba471081af38ae0"
+                },
+                "deleteOption": "Detach",
+                "diskSizeGB": 127
+            },
+            "dataDisks": [
+                {
+                    "lun": 0,
+                    "name": "simple-vm_disk2_f5f2ae8673cb4eb0a13171b4341119ac",
+                    "createOption": "Empty",
+                    "caching": "None",
+                    "managedDisk": {
+                        "storageAccountType": "Premium_LRS",
+                        "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/disks/simple-vm_disk2_f5f2ae8673cb4eb0a13171b4341119ac"
+                    },
+                    "deleteOption": "Detach",
+                    "diskSizeGB": 1023,
+                    "toBeDetached": false
+                }
+            ]
+        },
+        "osProfile": {
+            "computerName": "simple-vm",
+            "adminUsername": "adminuser",
+            "windowsConfiguration": {
+                "provisionVMAgent": true,
+                "enableAutomaticUpdates": true,
+                "patchSettings": {
+                    "patchMode": "AutomaticByOS",
+                    "assessmentMode": "ImageDefault"
+                }
+            },
+            "secrets": [],
+            "allowExtensionOperations": true,
+            "requireGuestProvisionSignal": true
+        },
+        "securityProfile": {
+            "uefiSettings": {
+                "secureBootEnabled": true,
+                "vTpmEnabled": true
+            },
+            "securityType": "TrustedLaunch"
+        },
+        "networkProfile": {
+            "networkInterfaces": [
+                {
+                    "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Network/networkInterfaces/myVMNic"
+                }
+            ]
+        },
+        "diagnosticsProfile": {
+            "bootDiagnostics": {
+                "enabled": true,
+                "storageUri": "https://bootdiagsrdukue647avbo.blob.core.windows.net/"
+            }
+        },
+        "provisioningState": "Succeeded"
+    },
+    "resources": [
+        {
+            "name": "GuestAttestation",
+            "id": "/subscriptions/393e3de3-0900-4b72-8f1b-fb3b1d6b97f1/resourceGroups/anne_tdarm/providers/Microsoft.Compute/virtualMachines/simple-vm/extensions/GuestAttestation",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "francecentral",
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "provisioningState": "Succeeded",
+                "enableAutomaticUpgrade": true,
+                "publisher": "Microsoft.Azure.Security.WindowsAttestation",
+                "type": "GuestAttestation",
+                "typeHandlerVersion": "1.0",
+                "settings": {
+                    "AttestationConfig": {
+                        "MaaSettings": {
+                            "maaEndpoint": "",
+                            "maaTenantName": "GuestAttestation"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
